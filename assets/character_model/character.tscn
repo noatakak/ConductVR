@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqr1xpdrpqvoa"]
+
+[ext_resource type="PackedScene" uid="uid://bc1ufqyoypapr" path="res://assets/character_model/character.fbx" id="1_dexyu"]
+[ext_resource type="Script" path="res://assets/character_model/start_ik.gd" id="2_62xgi"]
+
+[node name="character" instance=ExtResource("1_dexyu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="RootNode" index="0"]
+bones/0/scale = Vector3(1.00048, 1.00048, 1.00048)
+bones/4/scale = Vector3(0.000474975, 0.000474975, 0.000474975)
+bones/10/scale = Vector3(0.000474975, 0.000474975, 0.000474975)
+bones/34/scale = Vector3(0.000474975, 0.000474975, 0.000474975)
+bones/55/scale = Vector3(0.000474975, 0.000474975, 1.00048)
+bones/60/scale = Vector3(0.000474975, 1.00048, 0.000474975)
+
+[node name="rightArmIK" type="SkeletonIK3D" parent="RootNode/Skeleton3D" index="2"]
+process_priority = 1
+root_bone = &"mixamorig_RightArm"
+tip_bone = &"mixamorig_RightHand"
+use_magnet = true
+magnet = Vector3(-1, -0.2, 0)
+target_node = NodePath("../../rightArmTarget")
+script = ExtResource("2_62xgi")
+
+[node name="leftArmIK" type="SkeletonIK3D" parent="RootNode/Skeleton3D" index="3"]
+process_priority = 1
+root_bone = &"mixamorig_LeftArm"
+tip_bone = &"mixamorig_LeftHand"
+use_magnet = true
+magnet = Vector3(1, -0.2, 0)
+target_node = NodePath("../../leftArmTarget")
+script = ExtResource("2_62xgi")
+
+[node name="leftArmTarget" type="Marker3D" parent="RootNode" index="1"]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, -0.4, 1.08975, 0)
+top_level = true
+
+[node name="rightArmTarget" type="Marker3D" parent="RootNode" index="2"]
+transform = Transform3D(4.37114e-08, 3.82137e-15, 1, 8.74228e-08, -1, 0, 1, 8.74228e-08, -4.37114e-08, 0.4, 1, 0)
+top_level = true
