@@ -1,0 +1,22 @@
+To Do:
+	Figure out menu interactibility
+		Host Button
+		Join Button
+		Server IP Text Box
+		Pop up messages
+			IP address
+			Incorrect input formats
+	Get player character model URL
+		PLAYER const variable will not work without it
+	Figure out what is needed to get IP address off of Meta Quest
+		System is considered Android
+	Multiplayer Tools
+		MultiplayerSpawner
+		MultiplayerSynchronizer
+
+General Notes:
+	The UPNP function in the network.gd script will not be commented out unless
+	we find that it somehow is activating itself without being called down the
+	line. The function call is currently commented out on line 55 (as of 11/23/23)
+	and will stay that way. This is just to show part of the trial and error
+	process. 
