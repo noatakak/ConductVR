@@ -32,10 +32,12 @@ func _on_server_ip_text_submitted(new_text):
 # which is just the local IP right now, and calls function to add host
 # character
 func _on_host_pressed():
+	# Menu visiblity and text
 	$NetworkInfo/NetworkSideDisplay.text = "Server Side"
 	$Menu.visible = false
 	$ServerIP.visible = false
 	
+	# Creating server and player lists
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
@@ -43,11 +45,28 @@ func _on_host_pressed():
 	
 	add_player(multiplayer.get_unique_id())
 	
+	# IP
 	print("IP addresses in array: " + ips)
 	
+	# Windows IP
 	if OS.has_feature("windows"):
 		if OS.has_environment("COMPUTERNAME"):
 			ip_address = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")), 1)
+	
+	# Linux IP
+	elif OS.has_feature("linux"):
+		if OS.has_environment("HOSTNAME"):
+			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
+	
+	# Mac IP
+	elif OS.has_feature("macos"):
+		if OS.has_environment("HOSTNAME"):
+			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
+	
+	# Android IP
+	elif OS.has_feature("android"):
+		if OS.has_environment("HOSTNAME"):
+			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
 	
 	print("IP address is most likely: " + ip_address)
 	

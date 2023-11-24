@@ -10,6 +10,9 @@ To Do:
 		PLAYER const variable will not work without it
 	Figure out what is needed to get IP address off of Meta Quest
 		System is considered Android
+		Still needs work: added elif's for some of the differen operating systems
+		(probably un-needed, but still), unsure if the android one will work, will
+		have to test with headset itself.
 	Multiplayer Tools
 		MultiplayerSpawner
 		MultiplayerSynchronizer
