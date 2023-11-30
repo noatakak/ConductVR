@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cjmc86issljty"]
+
+[node name="UIscene" type="VBoxContainer"]
+offset_right = 500.0
+offset_bottom = 500.0
+size_flags_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Weclome to ConudctVR! 
+Please select HOST to start a room.
+Tto join a room, enter the host IP address then select JOIN."
+horizontal_alignment = 1
+autowrap_mode = 2

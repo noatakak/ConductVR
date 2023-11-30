@@ -28,6 +28,7 @@ uv1_triplanar = true
 [node name="StartXR" parent="." instance=ExtResource("2_jicr0")]
 
 [node name="UITest" parent="." instance=ExtResource("3_gsyqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18669, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4ppyl")
