@@ -3,16 +3,39 @@
 [node name="UIscene" type="VBoxContainer"]
 offset_right = 500.0
 offset_bottom = 500.0
-size_flags_horizontal = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Header" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="Header"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Weclome to ConudctVR! 
 Please select HOST to start a room.
-Tto join a room, enter the host IP address then select JOIN."
+To join a room, enter the host IP address then select JOIN."
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="TextBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TextBox"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="TextBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.462745, 0.462745, 0.462745, 1)
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Host" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "HOST"
+
+[node name="Join" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "JOIN"

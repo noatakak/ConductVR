@@ -24,4 +24,4 @@ scene = ExtResource("2_nn3hj")
 viewport_size = Vector2(500, 500)
 
 [node name="VirtualKeyboard" parent="." instance=ExtResource("2_fe7w8")]
-transform = Transform3D(1, 0, 0, 0, 0.708032, 0.706181, 0, -0.706181, 0.708032, 0, -0.564962, 0.537432)
+transform = Transform3D(1, 0, 0, 0, 0.781847, 0.62347, 0, -0.62347, 0.781847, 0, -0.182592, 0.213389)

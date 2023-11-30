@@ -25,10 +25,13 @@ uv1_triplanar = true
 
 [node name="PlayerNode" parent="." instance=ExtResource("1_h5t5a")]
 
+[node name="XRCamera3D" parent="PlayerNode/XROrigin3D" index="0"]
+current = true
+
 [node name="StartXR" parent="." instance=ExtResource("2_jicr0")]
 
 [node name="UITest" parent="." instance=ExtResource("3_gsyqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18669, 0)
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -0.5, 1, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4ppyl")
@@ -45,3 +48,7 @@ shape = SubResource("BoxShape3D_34bca")
 [node name="CSGBox3D" type="CSGBox3D" parent="ground"]
 size = Vector3(10, 1, 10)
 material = SubResource("StandardMaterial3D_h4jdo")
+
+[editable path="PlayerNode"]
+[editable path="PlayerNode/XROrigin3D/LeftHand/left_hand"]
+[editable path="PlayerNode/XROrigin3D/RightHand/right_hand"]
