@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyskeq3ue3pba"]
+
+[ext_resource type="PackedScene" uid="uid://swb4ofoypi3j" path="res://assets/valve_hand_models/left_hand.glb" id="1_ceyhc"]
+[ext_resource type="PackedScene" uid="uid://cytd2fiulpk7a" path="res://assets/valve_hand_models/right_hand.glb" id="2_x0qa5"]
+
+[node name="PlayerNode" type="Node3D"]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+current = true
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="LeftHand" type="OpenXRHand" parent="XROrigin3D"]
+hand_skeleton = NodePath("left_hand/Armature_001/Skeleton3D")
+
+[node name="left_hand" parent="XROrigin3D/LeftHand" instance=ExtResource("1_ceyhc")]
+
+[node name="RightHand" type="OpenXRHand" parent="XROrigin3D"]
+hand = 1
+hand_skeleton = NodePath("right_hand/Armature/Skeleton3D")
+
+[node name="right_hand" parent="XROrigin3D/RightHand" instance=ExtResource("2_x0qa5")]
+
+[editable path="XROrigin3D/LeftHand/left_hand"]
+[editable path="XROrigin3D/RightHand/right_hand"]
