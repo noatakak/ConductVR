@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6178bbte6uol"]
+[gd_scene load_steps=7 format=3 uid="uid://b6178bbte6uol"]
 
+[ext_resource type="Script" path="res://working/noatak/ui_signals.gd" id="1_ccujs"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_sbdjq"]
 [ext_resource type="PackedScene" uid="uid://dgdb1texynduw" path="res://addons/godot-xr-tools/objects/virtual_keyboard.tscn" id="2_fe7w8"]
 [ext_resource type="PackedScene" uid="uid://cjmc86issljty" path="res://working/noatak/UIscene.tscn" id="2_nn3hj"]
@@ -12,6 +13,7 @@ material = SubResource("StandardMaterial3D_vnxvy")
 size = Vector3(2, 2, 0.02)
 
 [node name="UITest" type="Node3D"]
+script = ExtResource("1_ccujs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.881864, 0.471504, 0, -0.471504, 0.881864, 0, 0, 0)

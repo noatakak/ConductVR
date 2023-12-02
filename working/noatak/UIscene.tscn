@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://cjmc86issljty"]
+[gd_scene load_steps=2 format=3 uid="uid://cjmc86issljty"]
+
+[ext_resource type="Script" path="res://working/noatak/UIscene.gd" id="1_c0mo0"]
 
 [node name="UIscene" type="VBoxContainer"]
 offset_right = 500.0
 offset_bottom = 500.0
+script = ExtResource("1_c0mo0")
 
 [node name="Header" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -39,3 +42,6 @@ text = "HOST"
 [node name="Join" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "JOIN"
+
+[connection signal="pressed" from="Buttons/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Buttons/Join" to="." method="_on_join_pressed"]

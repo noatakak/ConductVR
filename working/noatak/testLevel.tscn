@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl6vubk28jrts"]
+[gd_scene load_steps=11 format=3 uid="uid://dl6vubk28jrts"]
 
 [ext_resource type="PackedScene" uid="uid://cyskeq3ue3pba" path="res://working/noatak/PlayerNode.tscn" id="1_h5t5a"]
+[ext_resource type="Script" path="res://working/noatak/main_scene.gd" id="1_lqt51"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="2_jicr0"]
 [ext_resource type="PackedScene" uid="uid://b6178bbte6uol" path="res://working/noatak/UITest.tscn" id="3_gsyqw"]
 [ext_resource type="Texture2D" uid="uid://dtliye0a3h6ph" path="res://assets/test_texture.png" id="4_100sl"]
@@ -22,17 +23,12 @@ albedo_texture = ExtResource("4_100sl")
 uv1_triplanar = true
 
 [node name="testLevel" type="Node3D"]
+script = ExtResource("1_lqt51")
 
 [node name="PlayerNode" parent="." instance=ExtResource("1_h5t5a")]
 
 [node name="XRCamera3D" parent="PlayerNode/XROrigin3D" index="0"]
 current = true
-
-[node name="BoneAttachment3D" parent="PlayerNode/XROrigin3D/LeftHand/left_hand/Armature_001/Skeleton3D" index="1"]
-transform = Transform3D(0.19221, -0.669965, -0.717079, 0.977075, 0.19881, 0.076153, 0.0915428, -0.715277, 0.692819, 0.0345973, 0.0355402, -0.164767)
-
-[node name="BoneAttachment3D" parent="PlayerNode/XROrigin3D/RightHand/right_hand/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.19221, 0.669966, 0.717078, -0.091543, -0.715277, 0.69282, 0.977075, -0.19881, -0.0761527, -0.0345978, -0.164767, -0.0355401)
 
 [node name="StartXR" parent="." instance=ExtResource("2_jicr0")]
 
@@ -55,6 +51,10 @@ shape = SubResource("BoxShape3D_34bca")
 size = Vector3(10, 1, 10)
 material = SubResource("StandardMaterial3D_h4jdo")
 
+[connection signal="host_pressed" from="UITest" to="." method="_on_ui_test_host_pressed"]
+[connection signal="join_pressed" from="UITest" to="." method="_on_ui_test_join_pressed"]
+
 [editable path="PlayerNode"]
 [editable path="PlayerNode/XROrigin3D/LeftHand/left_hand"]
 [editable path="PlayerNode/XROrigin3D/RightHand/right_hand"]
+[editable path="PlayerNode/XROrigin3D/character"]

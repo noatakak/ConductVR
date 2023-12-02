@@ -4,7 +4,7 @@ extends Node3D
 @onready var server_ip = $ServerIP
 
 const PORT = 9999
-# const PLAYER = preload("") # This needs the URL to the character
+var player
 
 var connected_peer_ids = []
 var local_player_character
@@ -31,7 +31,8 @@ func _on_server_ip_text_submitted(new_text):
 # On pressing host button, creates server, figures out joining address,
 # which is just the local IP right now, and calls function to add host
 # character
-func _on_host_pressed():
+func _on_host_pressed(playerNode):
+	player = playerNode
 	# Menu visiblity and text
 	$NetworkInfo/NetworkSideDisplay.text = "Server Side"
 	$Menu.visible = false
@@ -75,7 +76,8 @@ func _on_host_pressed():
 
 
 # Calls functions and deals with menus when pressing join.
-func _on_join_pressed():
+func _on_join_pressed(playerNode):
+	player=playerNode
 	$NetworkInfo/NetworkSideDisplay.text = "Client Side"
 	$Menu.visible = false
 	$ServerIP.visible = false
@@ -86,7 +88,6 @@ func _on_join_pressed():
 
 # Function to add player characters.
 func add_player(peer_id):
-	var player = PLAYER.instantiate()
 	player.name = str(peer_id)
 	add_child(player)
 
