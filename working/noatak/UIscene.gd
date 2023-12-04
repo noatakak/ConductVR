@@ -7,8 +7,7 @@ var textBox
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	textBox = $Header/test
-	Input.connect("key_pressed", self._on_key_pressed)
+	textBox = $TextBox/Label
 	
 
 
@@ -16,10 +15,16 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_key_pressed(event):
+func _input(event):
 	if event is InputEventKey and event.pressed:
 		var keycode = event.keycode
-		textBox.set_text(keycode)
+		print(keycode)
+		if keycode == KEY_BACKSPACE:  # Backspace key
+			textBox.set_text(textBox.get_text().left(textBox.get_text().length() - 1))
+		elif keycode in range(32, 127):  # ASCII printable characters
+			var character = char(keycode)
+			print(character)
+			textBox.set_text(textBox.get_text() + character)
 
 
 func _on_host_pressed():

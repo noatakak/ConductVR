@@ -30,6 +30,12 @@ script = ExtResource("1_lqt51")
 [node name="XRCamera3D" parent="PlayerNode/XROrigin3D" index="0"]
 current = true
 
+[node name="BoneAttachment3D" parent="PlayerNode/XROrigin3D/LeftHand/left_hand/Armature_001/Skeleton3D" index="1"]
+transform = Transform3D(0.19221, -0.669965, -0.717079, 0.977075, 0.19881, 0.0761532, 0.0915425, -0.715277, 0.692819, 0.0345973, 0.0355402, -0.164767)
+
+[node name="BoneAttachment3D" parent="PlayerNode/XROrigin3D/RightHand/right_hand/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.19221, 0.669965, 0.717079, -0.0915426, -0.715277, 0.692819, 0.977075, -0.19881, -0.076153, -0.0345978, -0.164767, -0.0355401)
+
 [node name="StartXR" parent="." instance=ExtResource("2_jicr0")]
 
 [node name="UITest" parent="." instance=ExtResource("3_gsyqw")]
@@ -55,6 +61,4 @@ material = SubResource("StandardMaterial3D_h4jdo")
 [connection signal="join_pressed" from="UITest" to="." method="_on_ui_test_join_pressed"]
 
 [editable path="PlayerNode"]
-[editable path="PlayerNode/XROrigin3D/LeftHand/left_hand"]
-[editable path="PlayerNode/XROrigin3D/RightHand/right_hand"]
 [editable path="PlayerNode/XROrigin3D/character"]

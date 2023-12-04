@@ -27,3 +27,6 @@ viewport_size = Vector2(500, 500)
 
 [node name="VirtualKeyboard" parent="." instance=ExtResource("2_fe7w8")]
 transform = Transform3D(1, 0, 0, 0, 0.781847, 0.62347, 0, -0.62347, 0.781847, 0, -0.182592, 0.213389)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465409, 2.52472)

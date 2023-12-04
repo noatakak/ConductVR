@@ -11,7 +11,7 @@ func on_join_pressed():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var scene = $Screen/Viewport2Din3D.get_scene_instance()
+	var scene = $MeshInstance3D/Viewport2Din3D.get_scene_instance_load_placeholder()
 	if scene:
 		scene.connect("host_pressed", on_host_pressed)
 		scene.connect("join_pressed", on_join_pressed)
