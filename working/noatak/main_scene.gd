@@ -13,7 +13,9 @@ func _process(delta):
 
 func _on_ui_test_host_pressed():
 	Network._on_host_pressed($PlayerNode)
+	print("host_pressed")
 
 
 func _on_ui_test_join_pressed():
 	Network._on_join_pressed($PlayerNode)
+	print("join_pressed")

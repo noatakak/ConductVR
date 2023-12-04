@@ -25,6 +25,7 @@ func _input(event):
 			var character = char(keycode)
 			print(character)
 			textBox.set_text(textBox.get_text() + character)
+			Network.server_ip = textBox.get_text()
 
 
 func _on_host_pressed():

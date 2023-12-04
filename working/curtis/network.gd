@@ -1,7 +1,7 @@
 extends Node3D
 
 # Variables
-@onready var server_ip = $ServerIP
+var server_ip
 
 const PORT = 9999
 var player
