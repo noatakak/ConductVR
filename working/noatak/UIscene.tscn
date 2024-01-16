@@ -25,15 +25,10 @@ alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="TextBox"]
 layout_mode = 2
-placeholder_text = "Enter IP Here"
-
-[node name="Label" type="Label" parent="TextBox"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="TextBox"]
-layout_mode = 2
 size_flags_horizontal = 3
-color = Color(0.462745, 0.462745, 0.462745, 1)
+placeholder_text = "To join, enter the host's IP here"
+alignment = 1
+expand_to_text_length = true
 
 [node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -46,6 +41,15 @@ text = "HOST"
 [node name="Join" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "JOIN"
+
+[node name="IPContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="IPContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Your IP is:"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Buttons/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Buttons/Join" to="." method="_on_join_pressed"]

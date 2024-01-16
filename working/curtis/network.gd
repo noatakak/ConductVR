@@ -1,7 +1,7 @@
-extends Node3D
+extends Node
 
 # Variables
-var server_ip
+@export var server_ip: String
 
 const PORT = 9999
 var player
@@ -23,9 +23,9 @@ var external_ip
 # assigns the correct variables, and then deals with menus.
 func _on_server_ip_text_submitted(new_text):
 	server_ip = new_text
-	$ServerIP.text = ""
-	$ServerIP.visible = false
-	$ServerIP.visible = true
+#	$ServerIP.text = ""
+#	$ServerIP.visible = false
+#	$ServerIP.visible = true
 
 
 # On pressing host button, creates server, figures out joining address,
@@ -34,9 +34,9 @@ func _on_server_ip_text_submitted(new_text):
 func _on_host_pressed(playerNode):
 	player = playerNode
 	# Menu visiblity and text
-	$NetworkInfo/NetworkSideDisplay.text = "Server Side"
-	$Menu.visible = false
-	$ServerIP.visible = false
+#	$NetworkInfo/NetworkSideDisplay.text = "Server Side"
+#	$Menu.visible = false
+#	$ServerIP.visible = false
 	
 	# Creating server and player lists
 	enet_peer.create_server(PORT)
@@ -69,7 +69,7 @@ func _on_host_pressed(playerNode):
 		if OS.has_environment("HOSTNAME"):
 			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
 	
-	print("IP address is most likely: " + ip_address)
+	print("IP address is most likely: " + "10.72.42.84")
 	
 	# Will remain commented out as identifier of what we tried before.
 	# upnp_setup()
@@ -78,9 +78,9 @@ func _on_host_pressed(playerNode):
 # Calls functions and deals with menus when pressing join.
 func _on_join_pressed(playerNode):
 	player=playerNode
-	$NetworkInfo/NetworkSideDisplay.text = "Client Side"
-	$Menu.visible = false
-	$ServerIP.visible = false
+#	$NetworkInfo/NetworkSideDisplay.text = "Client Side"
+#	$Menu.visible = false
+#	$ServerIP.visible = false
 	
 	enet_peer.create_client(server_ip, PORT)
 	multiplayer.multiplayer_peer = enet_peer
@@ -102,8 +102,8 @@ func remove_player(peer_id):
 # Function for chat messages (probably not going to be used)
 func _on_message_input_text_submitted(new_text):
 	local_player_character.rpc("display_message", new_text)
-	$MessageInput.text = ""
-	$MessageInput.release_focus()
+#	$MessageInput.text = ""
+#	$MessageInput.release_focus()
 
 
 # DO NOT USE: this is simply for showing what we tried,
