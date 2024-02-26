@@ -260,7 +260,6 @@ properties/7/replication_mode = 1
 script = ExtResource("1_2pxay")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
-visible = false
 current = true
 
 [node name="HeadMesh" type="MeshInstance3D" parent="XRCamera3D"]

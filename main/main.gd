@@ -11,11 +11,11 @@ var ip_address
 
 
 func _ready():
-	if globals.host == true:
-		$Label3D.text = globals.hosting_ip
+	if Globals.host == true:
+		$Label3D.text = Globals.hosting_ip
 		_hosting()
 	else:
-		$Label3D.text = globals.joining_server_ip
+		$Label3D.text = Globals.joining_server_ip
 		_joining()
 
 
@@ -51,7 +51,7 @@ func _hosting():
 			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
 	
 	ip_address = ip_array[1]
-	globals.hosting_ip = ip_address
+	Globals.hosting_ip = ip_address
 	
 	print("IP address (most likely): " + ip_address)
 	
@@ -63,7 +63,7 @@ func _hosting():
 
 func _joining():
 	# Start as client
-	enet_peer.create_client(globals.joining_server_ip, PORT)
+	enet_peer.create_client(Globals.joining_server_ip, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 
 
