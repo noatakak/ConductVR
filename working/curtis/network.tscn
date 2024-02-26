@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b41vp7mone4sx"]
-
-[ext_resource type="Script" path="res://working/curtis/network.gd" id="1_fdbhc"]
-
-[node name="Network" type="Node"]
-script = ExtResource("1_fdbhc")

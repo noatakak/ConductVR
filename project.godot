@@ -22,11 +22,11 @@ Network="*res://working/curtis/network.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Mirror/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/Mirror/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/godotopenxrvendors/plugin.cfg")
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 

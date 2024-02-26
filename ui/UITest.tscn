@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6178bbte6uol"]
+
+[ext_resource type="Script" path="res://ui/ui_signals.gd" id="1_ccujs"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_sbdjq"]
+[ext_resource type="PackedScene" uid="uid://dgdb1texynduw" path="res://addons/godot-xr-tools/objects/virtual_keyboard.tscn" id="2_fe7w8"]
+[ext_resource type="PackedScene" uid="uid://cjmc86issljty" path="res://ui/UIscene.tscn" id="2_nn3hj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnxvy"]
+albedo_color = Color(0.203922, 0.203922, 0.203922, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kt1gh"]
+material = SubResource("StandardMaterial3D_vnxvy")
+size = Vector3(2, 2, 0.02)
+
+[node name="UITest" type="Node3D"]
+script = ExtResource("1_ccujs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.881864, 0.471504, 0, -0.471504, 0.881864, 0, 0, 0)
+mesh = SubResource("BoxMesh_kt1gh")
+
+[node name="Viewport2Din3D" parent="MeshInstance3D" instance=ExtResource("1_sbdjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00985495, 0.0184319)
+screen_size = Vector2(2, 2)
+scene = ExtResource("2_nn3hj")
+viewport_size = Vector2(500, 500)
+
+[node name="VirtualKeyboard" parent="." instance=ExtResource("2_fe7w8")]
+transform = Transform3D(1, 0, 0, 0, 0.781847, 0.62347, 0, -0.62347, 0.781847, 0, -0.182592, 0.213389)
