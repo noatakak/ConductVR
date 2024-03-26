@@ -1,0 +1,99 @@
+[gd_scene load_steps=2 format=3 uid="uid://lmsx2bm5ub3e"]
+
+[ext_resource type="Script" path="res://UI/Podium/Podium Menu.gd" id="1_xf3lw"]
+
+[node name="PodiumMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xf3lw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_right = 576.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Song List"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VFS - Spring" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Vivaldi's Four Seasons - Spring"
+metadata/VFS_Spring = ""
+
+[node name="VFS - Summer" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Vivaldi's Four Seasons - Summer"
+metadata/VFS_Summer = ""
+
+[node name="VFS - Autumn" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Vivaldi's Four Seasons - Autumn"
+metadata/VFS_Autumn = ""
+
+[node name="VFS - Winter" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Vivaldi's Four Seasons - Winter"
+metadata/VFS_Winter = ""
+
+[node name="PC" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Pachelbel's Canon"
+metadata/PC = ""
+
+[node name="Tchaik" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tchaikovsky - Sleeping Beauty Waltz"
+metadata/Tchaik = ""
+
+[node name="Grieg No_1" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Grieg - Peer Gynt Suite No. 1 \"Morning Mood\""
+metadata/Grieg_No_1 = ""
+
+[node name="Grieg No_4" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Grieg - Peer Gynt Suite No. 4 \"In the Hall of the Mountain King\""
+metadata/Grieg_No_4 = ""
+
+[node name="Bizet" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Bizet - Habanera from \"Carmen\""
+metadata/Bizet = ""
+
+[node name="Satie" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Satie - 3 Gymnopedies No. 1"
+metadata/Satie = ""
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VFS - Spring" to="." method="_on_button_pressed" binds= ["VFS_Spring"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VFS - Summer" to="." method="_on_button_pressed" binds= ["VFS_Summer"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VFS - Autumn" to="." method="_on_button_pressed" binds= ["VFS_Autumn"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VFS - Winter" to="." method="_on_button_pressed" binds= ["VFS_Winter"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/PC" to="." method="_on_button_pressed" binds= ["PC"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Tchaik" to="." method="_on_button_pressed" binds= ["Tchaik"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Grieg No_1" to="." method="_on_button_pressed" binds= ["Grieg_No_1"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Grieg No_4" to="." method="_on_button_pressed" binds= ["Grieg_No_4"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Bizet" to="." method="_on_button_pressed" binds= ["Bizet"]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Satie" to="." method="_on_button_pressed" binds= ["Satie"]]

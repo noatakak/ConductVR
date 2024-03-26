@@ -10,3 +10,6 @@ extends Node
 
 # Variable for player ID
 @export var playerID = ""
+
+# Variable for current playing piece
+@export var currentPiece = ""
