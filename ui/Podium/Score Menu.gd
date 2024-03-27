@@ -32,7 +32,7 @@ func _create_file_dir(path):
 		var file_name = dir.get_next()
 		if file_name == "":
 			break
-		elif !file_name.begins_with(".") and !file_name.ends_with(".import"):
+		elif !file_name.begins_with(".") and !file_name.ends_with(".import") and !file_name.ends_with(".mid"):
 			files.append(load(path + "/" + file_name))
 	dir.list_dir_end()
 
@@ -45,6 +45,11 @@ func _on_exit_pressed():
 func _on_prev_page_pressed():
 	if index == 0 || index == 1:
 		pass
+	elif index % 2 == 0:
+		$PageContainer/Page2.texture = files[index - 2]
+		index -= 2
+		$PageContainer/Page1.texture = files[index - 2]
+		index -= 2
 	else:
 		$PageContainer/Page2.texture = files[index - 1]
 		index -= 1
@@ -53,10 +58,20 @@ func _on_prev_page_pressed():
 
 
 func _on_next_page_pressed():
-	if index == (files.size() - 2):
+	if index == (files.size() - 1):
 		pass
+	elif files.size() % 2 == 0:
+		$PageContainer/Page1.texture = files[index + 1]
+		index += 1
+		
+		$PageContainer/Page2.texture = files[index + 1]
+		index += 1
 	else:
 		$PageContainer/Page1.texture = files[index + 1]
 		index += 1
-		$PageContainer/Page2.texture = files[index + 1]
-		index += 1
+		
+		if index <= files.size() - 2:
+			$PageContainer/Page2.texture = files[index + 1]
+			index += 1
+		else:
+			$PageContainer/Page2.texture = null
