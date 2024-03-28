@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd8tr7uvuwo41"]
+
+[ext_resource type="Script" path="res://ui/ui_signals.gd" id="1_4r5ma"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_o7wkh"]
+[ext_resource type="PackedScene" uid="uid://dxlilwdt7pugs" path="res://ui/Personal Menu/Wrist Menu.tscn" id="3_vbknu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnxvy"]
+albedo_color = Color(0.203922, 0.203922, 0.203922, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kt1gh"]
+material = SubResource("StandardMaterial3D_vnxvy")
+size = Vector3(2, 2, 0.02)
+
+[node name="VPodiumMenu" type="Node3D"]
+script = ExtResource("1_4r5ma")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.881864, 0.471504, 0, -0.471504, 0.881864, 0, 0, 0)
+mesh = SubResource("BoxMesh_kt1gh")
+
+[node name="Viewport2Din3D" parent="MeshInstance3D" instance=ExtResource("2_o7wkh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00985495, 0.0184319)
+screen_size = Vector2(2, 2)
+scene = ExtResource("3_vbknu")
+viewport_size = Vector2(500, 500)

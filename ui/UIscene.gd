@@ -27,7 +27,7 @@ func _input(event):
 			var character = char(keycode)
 			print(character)
 			textBox.text = textBox.get_text() + character
-			globals.joining_server_ip = textBox.get_text()
+			Globals.joining_server_ip = textBox.get_text()
 
 
 func _on_host_pressed():
