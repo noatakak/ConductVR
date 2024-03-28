@@ -46,15 +46,19 @@ func _on_prev_page_pressed():
 	if index == 0 || index == 1:
 		pass
 	elif index % 2 == 0:
-		$PageContainer/Page2.texture = files[index - 2]
-		index -= 2
-		$PageContainer/Page1.texture = files[index - 2]
-		index -= 2
-	else:
 		$PageContainer/Page2.texture = files[index - 1]
 		index -= 1
 		$PageContainer/Page1.texture = files[index - 1]
 		index -= 1
+		
+		print(index)
+	else:
+		$PageContainer/Page2.texture = files[index - 2]
+		index -= 1
+		$PageContainer/Page1.texture = files[index - 2]
+		index -= 1
+		
+		print(index)
 
 
 func _on_next_page_pressed():
@@ -66,6 +70,8 @@ func _on_next_page_pressed():
 		
 		$PageContainer/Page2.texture = files[index + 1]
 		index += 1
+		
+		print(index)
 	else:
 		$PageContainer/Page1.texture = files[index + 1]
 		index += 1
@@ -73,5 +79,9 @@ func _on_next_page_pressed():
 		if index <= files.size() - 2:
 			$PageContainer/Page2.texture = files[index + 1]
 			index += 1
+			
+			print(index)
 		else:
 			$PageContainer/Page2.texture = null
+			
+			print(index)
