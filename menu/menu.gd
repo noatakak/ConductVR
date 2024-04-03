@@ -9,7 +9,7 @@ func _ready():
 
 func _process(delta):
 	$UITest.global_transform.origin = new_player.find_child("UI_marker").global_transform.origin
-
+	$UITest.look_at(new_player.find_child("XRCamera3D").global_transform.origin, Vector3(0,1,0), true)
 
 func _on_server_ip_text_submitted(new_text):
 	Globals.joining_server_ip = new_text

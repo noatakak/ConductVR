@@ -9,12 +9,9 @@ var ip_array = IP.get_local_addresses()
 var ips = " ".join(ip_array)
 var ip_address
 
-const env = preload("res://assets/concert_hall/stripped-hall.tscn")
+
 
 func _ready():
-	var new_env = env.instantiate()
-	add_child(new_env)
-	new_env.global_transform.origin = Vector3(0, 1.928, 7.863)
 	if Globals.host == true:
 		$Label3D.text = Globals.hosting_ip
 		_hosting()

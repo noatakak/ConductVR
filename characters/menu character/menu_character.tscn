@@ -225,7 +225,7 @@ current = true
 current = true
 
 [node name="UI_marker" type="Marker3D" parent="XRCamera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.294701, -0.490776)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.273897, -0.436986)
 
 [node name="LeftHand" type="OpenXRHand" parent="."]
 hand_skeleton = NodePath("left_hand/Armature_001/Skeleton3D")

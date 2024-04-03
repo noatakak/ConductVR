@@ -16,7 +16,7 @@ size = Vector3(2, 2, 0.02)
 script = ExtResource("1_ccujs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.881864, 0.471504, 0, -0.471504, 0.881864, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_kt1gh")
 
 [node name="Viewport2Din3D" parent="MeshInstance3D" instance=ExtResource("1_sbdjq")]
@@ -26,4 +26,4 @@ scene = ExtResource("2_nn3hj")
 viewport_size = Vector2(500, 500)
 
 [node name="VirtualKeyboard" parent="." instance=ExtResource("2_fe7w8")]
-transform = Transform3D(1, 0, 0, 0, 0.781847, 0.62347, 0, -0.62347, 0.781847, 0, -0.182592, 0.213389)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.1, 0.208)
