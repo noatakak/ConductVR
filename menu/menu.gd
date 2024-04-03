@@ -1,10 +1,14 @@
 extends Node3D
 
 const MPLAYER = preload("res://characters/menu character/menu_character.tscn")
+var new_player
 
 func _ready():
-	var new_player = MPLAYER.instantiate()
+	new_player = MPLAYER.instantiate()
 	add_child(new_player)
+
+func _process(delta):
+	$UITest.global_transform.origin = new_player.find_child("UI_marker").global_transform.origin
 
 
 func _on_server_ip_text_submitted(new_text):

@@ -2,12 +2,13 @@ extends XROrigin3D
 
 @export var left_hand_marker: Marker3D
 @export var right_hand_marker: Marker3D
+@export var neck_marker: Marker3D
 
 @export var camera: XRCamera3D
 
 @export var head_tracker: Node3D
-@export var left_hand_tracker: OpenXRHand
-@export var right_hand_tracker: OpenXRHand
+@export var left_hand_tracker: MeshInstance3D
+@export var right_hand_tracker: MeshInstance3D
 
 @export var char_node: Node3D
 
@@ -38,6 +39,8 @@ func update_body_position_and_rotation():
 	head_tracker.global_transform.origin = target_pos - camera.global_transform.basis.z * offset.z
 	char_node.global_transform.origin = head_tracker.global_transform.origin + Vector3(0, -1.7, 0);
 	char_node.global_rotation.y = head_tracker.global_rotation.y + PI
+	
+	neck_marker.global_position = head_tracker.global_position
 
 
 

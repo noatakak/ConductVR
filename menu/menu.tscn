@@ -86,7 +86,7 @@ text = "Join
 script = ExtResource("3_2u1ks")
 
 [node name="UITest" parent="." instance=ExtResource("4_r1ayy")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.221011, 1.08157, -0.669122)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.221011, 1.08157, -0.669122)
 
 [connection signal="text_submitted" from="ServerIP" to="." method="_on_server_ip_text_submitted"]
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
