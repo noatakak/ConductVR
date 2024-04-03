@@ -16,7 +16,6 @@ size = Vector3(2, 2, 0.02)
 script = ExtResource("1_ccujs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_kt1gh")
 
 [node name="Viewport2Din3D" parent="MeshInstance3D" instance=ExtResource("1_sbdjq")]

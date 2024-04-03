@@ -47,7 +47,7 @@ environment = SubResource("Environment_6t87e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.931056, 0.315993, -0.182438, 0, 0.5, 0.866025, 0.364877, -0.806318, 0.465528, -1.8, 8.02995, 3.67364)
-light_energy = 7.564
+light_energy = 0.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 9.615
 shadow_enabled = true
@@ -55,6 +55,18 @@ directional_shadow_mode = 0
 directional_shadow_fade_start = 1.0
 directional_shadow_max_distance = 44.6
 directional_shadow_pancake_size = 0.1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 7, 5)
+light_color = Color(1, 0.996078, 0.909804, 1)
+light_energy = 6.538
+light_indirect_energy = 11.872
+light_size = 0.897
+shadow_enabled = true
+spot_range = 40.0
+spot_attenuation = 0.0371628
+spot_angle = 41.77
+spot_angle_attenuation = 0.435275
 
 [node name="Players" type="Node3D" parent="."]
 
@@ -81,4 +93,4 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.927, 6.032)
 
 [node name="VPodiumMenu" parent="." instance=ExtResource("3_itu8f")]
-transform = Transform3D(0.3, 0, 0, 0, 0.25634, 0.155851, 0, -0.155851, 0.25634, 0, 0.949267, -0.488534)
+transform = Transform3D(0.3, 0, 0, 0, 0.25634, 0.155851, 0, -0.155851, 0.25634, 0, 0.749093, -0.488534)
