@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt8ki3wkarlyd"]
+[gd_scene load_steps=11 format=3 uid="uid://bt8ki3wkarlyd"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_85dna"]
-[ext_resource type="PackedScene" uid="uid://c5fs3wg04qq8k" path="res://assets/concert_hall/scene.gltf" id="2_sui63"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_namtc"]
 size = Vector3(10, 1, 10)
@@ -13,13 +12,32 @@ albedo_color = Color(0, 0.396078, 0, 1)
 material = SubResource("StandardMaterial3D_xyagm")
 size = Vector3(10, 1, 10)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a3b7u"]
+
+[sub_resource type="Sky" id="Sky_ocwp4"]
+sky_material = SubResource("ProceduralSkyMaterial_a3b7u")
+
 [sub_resource type="Environment" id="Environment_ciwdy"]
+background_mode = 2
+sky = SubResource("Sky_ocwp4")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gn4fk"]
+viewport_path = NodePath("Mirror/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rafl4"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_gn4fk")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ym8la"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_rafl4")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_85dna")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_namtc")
@@ -41,11 +59,17 @@ directional_shadow_mode = 0
 _spawnable_scenes = PackedStringArray("res://characters/player character/player_character.tscn")
 spawn_path = NodePath("../Players")
 
-[node name="OSG_Scene" parent="." instance=ExtResource("2_sui63")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1528.41, 0.54, 1689.58)
-
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57276, 1.38373, 0)
 billboard = 2
 text = "This will show the IP address."
 outline_size = 16
+
+[node name="Mirror" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.37114e-08, -1, 0, -4.37114e-08, -1.91069e-15, -1, -1, -4.37114e-08, 4.37114e-08, 2.50924, 1.208, 0)
+mesh = SubResource("PlaneMesh_ym8la")
+
+[node name="SubViewport" type="SubViewport" parent="Mirror"]
+
+[node name="Camera3D" type="Camera3D" parent="Mirror/SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.27592, 1.20834, 0)

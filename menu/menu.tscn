@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://uum3afi8p8j8"]
+[gd_scene load_steps=10 format=3 uid="uid://uum3afi8p8j8"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_llbat"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/xr/start_xr.gd" id="3_2u1ks"]
-[ext_resource type="PackedScene" uid="uid://c5fs3wg04qq8k" path="res://assets/concert_hall/scene.gltf" id="3_tkou7"]
 [ext_resource type="PackedScene" uid="uid://b6178bbte6uol" path="res://ui/UITest.tscn" id="4_r1ayy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lce4a"]
@@ -85,9 +84,6 @@ text = "Join
 
 [node name="XRToolsStartXR" type="Node" parent="."]
 script = ExtResource("3_2u1ks")
-
-[node name="OSG_Scene" parent="." instance=ExtResource("3_tkou7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1528.41, 0.54, 1689.58)
 
 [node name="UITest" parent="." instance=ExtResource("4_r1ayy")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.221011, 1.08157, -0.669122)

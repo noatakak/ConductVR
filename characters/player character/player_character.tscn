@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://h85bnkotwl34"]
+[gd_scene load_steps=15 format=3 uid="uid://h85bnkotwl34"]
 
 [ext_resource type="Script" path="res://characters/player character/player_character.gd" id="1_2pxay"]
 [ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="2_461d4"]
 [ext_resource type="Texture2D" uid="uid://e0ub0vorplvy" path="res://assets/valve_hand_models/right_hand_file2.png" id="2_vf57u"]
+[ext_resource type="PackedScene" uid="uid://dli2pti7dwfxf" path="res://assets/character/character_body.tscn" id="4_v8h8q"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_dxk5t"]
 radius = 0.25
@@ -256,17 +257,33 @@ properties/7/path = NodePath("RightHand:rotation")
 properties/7/spawn = true
 properties/7/replication_mode = 1
 
-[node name="PlayerCharacter" type="XROrigin3D"]
+[node name="PlayerCharacter" type="XROrigin3D" node_paths=PackedStringArray("left_hand_marker", "right_hand_marker", "camera", "head_tracker", "left_hand_tracker", "right_hand_tracker", "char_node")]
 script = ExtResource("1_2pxay")
+left_hand_marker = NodePath("character_body/Armature/Skeleton3D/LeftArmTarget")
+right_hand_marker = NodePath("character_body/Armature/Skeleton3D/RightArmTarget")
+camera = NodePath("XRCamera3D")
+head_tracker = NodePath("head_tracker")
+left_hand_tracker = NodePath("LeftHand")
+right_hand_tracker = NodePath("RightHand")
+char_node = NodePath("character_body")
+
+[node name="head_tracker" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="character_body" parent="." instance=ExtResource("4_v8h8q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 current = true
 
 [node name="HeadMesh" type="MeshInstance3D" parent="XRCamera3D"]
+visible = false
 mesh = SubResource("SphereMesh_dxk5t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XRCamera3D/HeadMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.165)
+visible = false
 mesh = SubResource("BoxMesh_4ipcp")
 
 [node name="Label3D" type="Label3D" parent="XRCamera3D"]
@@ -275,6 +292,7 @@ billboard = 1
 text = "Player ID"
 
 [node name="LeftHand" type="OpenXRHand" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.4, 0)
 hand_skeleton = NodePath("left_hand/Armature_001/Skeleton3D")
 
 [node name="left_hand" type="Node3D" parent="LeftHand"]
@@ -479,9 +497,11 @@ bone_idx = 9
 [node name="Poke" parent="LeftHand/left_hand/Armature_001/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_461d4")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LeftHand"]
+visible = false
 mesh = SubResource("SphereMesh_ex5q5")
 
 [node name="RightHand" type="OpenXRHand" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 1.4, 0)
 hand = 1
 hand_skeleton = NodePath("right_hand/Armature/Skeleton3D")
 
@@ -685,7 +705,10 @@ bone_idx = 9
 [node name="Poke" parent="RightHand/right_hand/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_461d4")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RightHand"]
+visible = false
 mesh = SubResource("SphereMesh_ex5q5")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ml5eq")
+
+[editable path="character_body"]
