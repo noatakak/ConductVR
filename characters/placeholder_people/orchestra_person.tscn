@@ -1,44 +1,44 @@
 [gd_scene load_steps=6 format=3 uid="uid://drfgbyj83f5se"]
 
-[sub_resource type="GDScript" id="GDScript_g6t5d"]
-script/source = "extends Node3D
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xu01"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ycsj4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1xu01")
+size = Vector3(1, 1.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_df0i7"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_24h2q"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_df0i7")
+
+[sub_resource type="GDScript" id="GDScript_20mdx"]
+script/source = "extends MeshInstance3D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	randomize_material_color()
+	var random_color = Color(randf(), randf(), randf())
+	mesh.material.albedo_color = random_color
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-func randomize_material_color():
-	var random_color = Color(randf(), randf(), randf())
-	$MeshInstance3D2.mesh.material.local_to_scene = true
-	$MeshInstance3D2.mesh.material.albedo_color = random_color
 "
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxb4c"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_j6ryl"]
-material = SubResource("StandardMaterial3D_sxb4c")
-height = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqd7r"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_oblb4"]
-material = SubResource("StandardMaterial3D_aqd7r")
 
 [node name="OrchestraPerson" type="Node3D"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
-script = SubResource("GDScript_g6t5d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_j6ryl")
+mesh = SubResource("PrismMesh_ycsj4")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16009, 0)
-mesh = SubResource("SphereMesh_oblb4")
+mesh = SubResource("BoxMesh_24h2q")
+script = SubResource("GDScript_20mdx")
