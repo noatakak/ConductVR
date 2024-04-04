@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bt8ki3wkarlyd"]
+[gd_scene load_steps=14 format=3 uid="uid://bt8ki3wkarlyd"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_85dna"]
 [ext_resource type="PackedScene" uid="uid://bx0ktjc3qy4tu" path="res://assets/concert_hall/stripped-hall.tscn" id="2_6nunc"]
@@ -15,8 +15,17 @@ albedo_color = Color(0, 0.396078, 0, 1)
 material = SubResource("StandardMaterial3D_xyagm")
 size = Vector3(10, 1, 10)
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kp0yx"]
+sky_energy_multiplier = 0.1
+ground_energy_multiplier = 0.0
+
+[sub_resource type="Sky" id="Sky_61i1h"]
+sky_material = SubResource("ProceduralSkyMaterial_kp0yx")
+
 [sub_resource type="Environment" id="Environment_6t87e"]
+background_mode = 2
 background_energy_multiplier = 1.65
+sky = SubResource("Sky_61i1h")
 ambient_light_energy = 1.75
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gn4fk"]
@@ -35,7 +44,6 @@ script = ExtResource("1_85dna")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_namtc")
@@ -77,6 +85,7 @@ spawn_path = NodePath("../Players")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.384, 3.5)
+visible = false
 billboard = 2
 text = "This will show the IP address."
 outline_size = 16

@@ -5,7 +5,6 @@ signal join_pressed()
 
 func on_host_pressed():
 	emit_signal("host_pressed")
-	print("pressed")
 func on_join_pressed():
 	emit_signal("join_pressed")
 
