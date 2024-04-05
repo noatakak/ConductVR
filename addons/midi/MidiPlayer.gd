@@ -725,8 +725,8 @@ func _sequence( delta:float ) -> void:
 			self.position += float( self.smf_data.timebase ) * delta * self.seconds_to_timebase * self.play_speed
 			self._process_track( )
 
-	#for asp in self.audio_stream_players:
-	#	asp._update_adsr( delta )
+	for asp in self.audio_stream_players:
+		asp._update_adsr( delta )
 
 ## トラック処理
 ## @return	実行イベント数
@@ -881,6 +881,7 @@ func _process_track_event_note_on( channel:GodotMIDIPlayerChannelStatus, note:in
 				note_player.pitch_bend_sensitivity = channel.rpn.pitch_bend_sensitivity
 				note_player.modulation = channel.modulation
 				note_player.modulation_sensitivity = channel.rpn.modulation_sensitivity
+				note_player.auto_release_mode = channel.drum_track
 				note_player.polyphony_count = float( polyphony_count )
 				note_player.note_stop( )
 				note_player.set_instrument( instrument )

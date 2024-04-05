@@ -14,10 +14,10 @@ class Instrument:
 	var array_base_pitch:Array[float]
 	## 波形データ
 	var array_stream:Array[AudioStreamWAV]
-	## 初期音量
-	var first_volume_db:float = 0.0
-	## ADSRステート
-	var adsr_states:AnimationLibrary
+	## ADSステート
+	var ads_state:Array[VolumeState]
+	## Rステート
+	var release_state:Array[VolumeState]
 	## 音量
 	var volume_db:float = 0.0
 	## ベロシティ範囲(最低)
@@ -119,6 +119,7 @@ class TempSoundFontInstrumentBag:
 		new.fine_tune = fine_tune
 		new.original_key = original_key
 		new.keynum = keynum
+		new.sample_modes = sample_modes
 		new.key_range = key_range.duplicate( )
 		new.vel_range = vel_range.duplicate( )
 		new.volume_db = volume_db
@@ -389,21 +390,21 @@ func _read_soundfont_preset_compose_sample( sf:SoundFont.SoundFontData, preset:P
 				if loaded_key in loaded_sample_data:
 					array_stream.append( loaded_sample_data[loaded_key] )
 				else:
-					var ass: = AudioStreamWAV.new( )
+					var asw: = AudioStreamWAV.new( )
 
-					ass.data = append_head_silent + sample_base.slice( start * 2, end * 2 - 1 )
-					ass.format = AudioStreamWAV.FORMAT_16_BITS
-					ass.mix_rate = 44100
-					ass.stereo = false
-					ass.loop_mode = AudioStreamWAV.LOOP_DISABLED
-					if ( ibag.sample_modes == SoundFont.sample_mode_loop_continuously ) or ( start + 64 <= start_loop and ibag.sample_modes == -1 and preset.number != drum_track_bank << 7 ):
-						ass.loop_mode = AudioStreamWAV.LOOP_FORWARD
-						ass.loop_begin = start_loop - start + append_head_silent_samples
-						ass.loop_end = end_loop - start + append_head_silent_samples
+					asw.data = append_head_silent + sample_base.slice( start * 2, end * 2 - 1 )
+					asw.format = AudioStreamWAV.FORMAT_16_BITS
+					asw.mix_rate = 44100
+					asw.stereo = false
+					asw.loop_mode = AudioStreamWAV.LOOP_DISABLED
+					if ibag.sample_modes == SoundFont.sample_mode_loop_continuously or ibag.sample_modes == SoundFont.sample_mode_loop_ends_by_key_depression:
+						asw.loop_mode = AudioStreamWAV.LOOP_FORWARD
+						asw.loop_begin = start_loop - start + append_head_silent_samples
+						asw.loop_end = end_loop - start + append_head_silent_samples
 
-					loaded_sample_data[loaded_key] = ass
+					loaded_sample_data[loaded_key] = asw
 
-					array_stream.append( ass )
+					array_stream.append( asw )
 
 				array_base_pitch.append( base_pitch )
 
@@ -424,39 +425,22 @@ func _read_soundfont_preset_compose_sample( sf:SoundFont.SoundFontData, preset:P
 			var s:float = adsr.sustain_vol_env_db
 			var r:float = adsr.release_vol_env_time
 			var volume_db:float = ibag.volume_db
-			var first_volume_db:float = 0.0
-
-			var ads_state:Animation = Animation.new( )
-			ads_state.length = a+d+0.2
-			var ads_state_track_idx: = ads_state.add_track( Animation.TYPE_VALUE )
-			ads_state.track_set_path( ads_state_track_idx, ".:current_volume_db" )
-			ads_state.track_set_interpolation_type( ads_state_track_idx, Animation.INTERPOLATION_LINEAR )
+			var ads_state:Array[VolumeState]
 			if 0.001 < a:
-				first_volume_db = -144.0
-				ads_state.track_insert_key( ads_state_track_idx, 0.0, -144.0 )
-				ads_state.track_insert_key( ads_state_track_idx, a, 0.0 )
-				ads_state.track_insert_key( ads_state_track_idx, a+d, s )
+				ads_state = [
+					VolumeState.new( 0.0, -144.0 ),
+					VolumeState.new( a, 0.0 ),
+					VolumeState.new( a+d, s ),
+				]
 			else:
-				first_volume_db = 0.0
-				ads_state.track_insert_key( ads_state_track_idx, 0.0, 0.0 )
-				ads_state.track_insert_key( ads_state_track_idx, d, s )
-
-			var release_state:Animation = Animation.new( )
-			release_state.length = r+0.2
-			var release_state_track_idx: = release_state.add_track( Animation.TYPE_VALUE )
-			release_state.track_set_path( release_state_track_idx, ".:current_volume_db" )
-			release_state.track_set_interpolation_type( release_state_track_idx, Animation.INTERPOLATION_LINEAR )
-			release_state.track_insert_key( release_state_track_idx, 0.0, s )
-			release_state.track_insert_key( release_state_track_idx, r, -144.0 )
-			# see also: https://github.com/godotengine/godot/blob/4.1.2-stable/scene/resources/animation.cpp#L1673
-			var release_state_stop_track_idx: = release_state.add_track( Animation.TYPE_METHOD )
-			release_state.track_set_path( release_state_stop_track_idx, "." )
-			release_state.track_insert_key( release_state_stop_track_idx, r, {"method": &"note_stop", "args": []} )
-
-			var adsr_states: = AnimationLibrary.new( )
-			adsr_states.add_animation( "ADS", ads_state )
-			adsr_states.add_animation( "R", release_state )
-
+				ads_state = [
+					VolumeState.new( 0.0, 0.0 ),
+					VolumeState.new( d, s ),
+				]
+			var release_state:Array[VolumeState] = [
+				VolumeState.new( 0.0, s ),
+				VolumeState.new( r, -144.0 ),
+			]
 			for key_number in range( key_range.low, key_range.high + 1 ):
 				#if preset.number == drum_track_bank << 7:
 				#	if 36 <= key_number and key_number <= 40:
@@ -475,8 +459,8 @@ func _read_soundfont_preset_compose_sample( sf:SoundFont.SoundFontData, preset:P
 				instrument.array_stream = array_stream
 
 				instrument.volume_db = volume_db
-				instrument.first_volume_db = first_volume_db
-				instrument.adsr_states = adsr_states
+				instrument.ads_state = ads_state
+				instrument.release_state = release_state
 				instrument.vel_range_min = vel_range_min
 				instrument.vel_range_max = vel_range_max
 

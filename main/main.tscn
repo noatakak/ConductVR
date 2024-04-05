@@ -16,17 +16,14 @@ material = SubResource("StandardMaterial3D_xyagm")
 size = Vector3(10, 1, 10)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kp0yx"]
-sky_energy_multiplier = 0.1
-ground_energy_multiplier = 0.0
 
 [sub_resource type="Sky" id="Sky_61i1h"]
 sky_material = SubResource("ProceduralSkyMaterial_kp0yx")
 
 [sub_resource type="Environment" id="Environment_6t87e"]
 background_mode = 2
-background_energy_multiplier = 1.65
+background_energy_multiplier = 0.05
 sky = SubResource("Sky_61i1h")
-ambient_light_energy = 1.75
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gn4fk"]
 viewport_path = NodePath("Mirror/SubViewport")
@@ -44,8 +41,10 @@ script = ExtResource("1_85dna")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+visible = false
 shape = SubResource("BoxShape3D_namtc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D"]
@@ -56,14 +55,10 @@ environment = SubResource("Environment_6t87e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.931056, 0.315993, -0.182438, 0, 0.5, 0.866025, 0.364877, -0.806318, 0.465528, -1.8, 8.02995, 3.67364)
+visible = false
 light_energy = 0.0
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 9.615
-shadow_enabled = true
 directional_shadow_mode = 0
-directional_shadow_fade_start = 1.0
-directional_shadow_max_distance = 44.6
-directional_shadow_pancake_size = 0.1
+sky_mode = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 7, 5)
@@ -85,7 +80,6 @@ spawn_path = NodePath("../Players")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.384, 3.5)
-visible = false
 billboard = 2
 text = "This will show the IP address."
 outline_size = 16
@@ -102,87 +96,87 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 1
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_6nunc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.927, 6.032)
 
-[node name="orchestra" type="Node3D" parent="."]
+[node name="musicians" type="Node3D" parent="."]
 
-[node name="OrchestraPerson" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1, -7.42863)
 
-[node name="OrchestraPerson2" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson2" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.34756, 1, -7.42863)
 
-[node name="OrchestraPerson3" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson3" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.3191, 1, -7.42863)
 
-[node name="OrchestraPerson4" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson4" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1.30145, -9.08128)
 
-[node name="OrchestraPerson5" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson5" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.34756, 1.30145, -9.08128)
 
-[node name="OrchestraPerson6" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson6" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.3191, 1.30145, -9.08128)
 
-[node name="OrchestraPerson7" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson7" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1.70451, -10.4601)
 
-[node name="OrchestraPerson8" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson8" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.34756, 1.70451, -10.4601)
 
-[node name="OrchestraPerson9" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson9" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.3191, 1.70451, -10.4601)
 
-[node name="OrchestraPerson10" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson10" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -4.33258, 1, -6.10358)
 
-[node name="OrchestraPerson11" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson11" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -3.27541, 1, -6.93923)
 
-[node name="OrchestraPerson12" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson12" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -5.36742, 1, -5.28558)
 
-[node name="OrchestraPerson13" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson13" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -5.35742, 1.30145, -7.40009)
 
-[node name="OrchestraPerson14" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson14" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -4.30025, 1.30145, -8.23575)
 
-[node name="OrchestraPerson15" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson15" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -6.39227, 1.30145, -6.58209)
 
-[node name="OrchestraPerson16" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson16" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -6.21246, 1.70451, -8.48179)
 
-[node name="OrchestraPerson17" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson17" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -5.15529, 1.70451, -9.31744)
 
-[node name="OrchestraPerson18" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson18" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.470703, 0, 0.372073, 0, 0.6, 0, -0.372073, 0, 0.470703, -7.24731, 1.70451, -7.66379)
 
-[node name="OrchestraPerson19" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson19" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 4.22884, 1, -6.1589)
 
-[node name="OrchestraPerson20" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson20" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 5.24869, 1, -5.27809)
 
-[node name="OrchestraPerson21" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson21" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 3.23052, 1, -7.02111)
 
-[node name="OrchestraPerson22" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson22" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 5.30906, 1.30145, -7.40965)
 
-[node name="OrchestraPerson23" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson23" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 6.32891, 1.30145, -6.52884)
 
-[node name="OrchestraPerson24" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson24" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 4.31075, 1.30145, -8.27186)
 
-[node name="OrchestraPerson25" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson25" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 6.2103, 1.70451, -8.45316)
 
-[node name="OrchestraPerson26" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson26" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 7.23016, 1.70451, -7.57235)
 
-[node name="OrchestraPerson27" parent="orchestra" instance=ExtResource("4_q3uwv")]
+[node name="OrchestraPerson27" parent="musicians" instance=ExtResource("4_q3uwv")]
 transform = Transform3D(0.454087, 0, -0.392179, 0, 0.6, 0, 0.392179, 0, 0.454087, 5.21199, 1.70451, -9.31537)
 
 [node name="audience" type="Node3D" parent="."]

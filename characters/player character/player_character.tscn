@@ -249,6 +249,27 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath("RightHand:rotation")
 properties/7/spawn = true
 properties/7/replication_mode = 1
+properties/8/path = NodePath("character_body:position")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("character_body:rotation")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("XRCamera3D/Label3D:text")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("character_body/Armature/Skeleton3D/LeftArmTarget:position")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("character_body/Armature/Skeleton3D/LeftArmTarget:rotation")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+properties/13/path = NodePath("character_body/Armature/Skeleton3D/RightArmTarget:position")
+properties/13/spawn = true
+properties/13/replication_mode = 1
+properties/14/path = NodePath("character_body/Armature/Skeleton3D/RightArmTarget:rotation")
+properties/14/spawn = true
+properties/14/replication_mode = 1
 
 [node name="PlayerCharacter" type="XROrigin3D" node_paths=PackedStringArray("left_hand_marker", "right_hand_marker", "neck_marker", "camera", "head_tracker", "left_hand_tracker", "right_hand_tracker", "char_node")]
 script = ExtResource("1_2pxay")

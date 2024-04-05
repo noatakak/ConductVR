@@ -80,6 +80,8 @@ func add_player(id = 1):
 	var character = PLAYER.instantiate()
 	character.name = str(id)
 	$Players.add_child(character)
+	if character.name != "1":
+		character.global_transform.origin = Vector3(-2, 0, -2)
 
 
 func del_player(id):

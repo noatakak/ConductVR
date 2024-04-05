@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_q0ukd"]
 [ext_resource type="PackedScene" uid="uid://lmsx2bm5ub3e" path="res://ui/Podium/Podium Menu.tscn" id="3_3pent"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnxvy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_177xk"]
 albedo_color = Color(0.203922, 0.203922, 0.203922, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kt1gh"]
-material = SubResource("StandardMaterial3D_vnxvy")
+material = SubResource("StandardMaterial3D_177xk")
 size = Vector3(2, 2, 0.02)
 
 [node name="VPodiumMenu" type="Node3D"]

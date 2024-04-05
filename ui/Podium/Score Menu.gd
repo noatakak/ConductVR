@@ -5,8 +5,17 @@ var files = []
 var dir
 var index
 
+signal exit
+signal play
+signal pause
+signal restart
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pass
+
+
+func set_score():
 	print(Globals.currentPiece)
 	scorePath += Globals.currentPiece
 	print(scorePath)
@@ -17,11 +26,13 @@ func _ready():
 	$PageContainer/Page2.texture = files[1]
 	index = 1
 	print(files.size())
+	Globals.currentPiece = ""
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Globals.currentPiece != "":
+		set_score()
 
 
 # Function to create array out of images in folders
@@ -39,7 +50,7 @@ func _create_file_dir(path):
 
 func _on_exit_pressed():
 	Globals.currentPiece = ""
-	get_tree().change_scene_to_file("res://ui/Podium/Podium Menu.tscn")
+	#get_tree().change_scene_to_file("res://ui/Podium/Podium Menu.tscn")
 
 
 func _on_prev_page_pressed():
