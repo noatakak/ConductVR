@@ -2,67 +2,37 @@
 
 [ext_resource type="Script" path="res://UI/Podium/Score Menu.gd" id="1_yb3uh"]
 
-[node name="ScoreMenu" type="Control"]
+[node name="ScoreMenu" type="VBoxContainer"]
 custom_minimum_size = Vector2(500, 500)
-layout_mode = 3
-anchors_preset = 0
+layout_direction = 1
 offset_right = 500.0
 offset_bottom = 500.0
 script = ExtResource("1_yb3uh")
 
-[node name="Exit" type="Button" parent="."]
+[node name="exitContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.04
+
+[node name="Exit" type="Button" parent="exitContainer"]
 top_level = true
-layout_mode = 1
-offset_right = 37.0
-offset_bottom = 33.0
+layout_mode = 2
 text = "X"
 
-[node name="Prev Page" type="Button" parent="."]
-top_level = true
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_right = 23.0
-offset_bottom = 15.5
-grow_vertical = 2
-text = "<-"
-
-[node name="Next Page" type="Button" parent="."]
-top_level = true
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -15.5
-offset_bottom = 15.5
-grow_horizontal = 0
-grow_vertical = 2
-text = "->"
-
 [node name="PageContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 14.0
 
-[node name="Page1" type="TextureRect" parent="PageContainer"]
+[node name="PrevButtonContainer" type="BoxContainer" parent="PageContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-expand_mode = 3
-stretch_mode = 5
+size_flags_stretch_ratio = 0.0
+
+[node name="PrevButton" type="Button" parent="PageContainer/PrevButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "<-"
 
 [node name="Page2" type="TextureRect" parent="PageContainer"]
 layout_mode = 2
@@ -70,40 +40,44 @@ size_flags_horizontal = 3
 expand_mode = 3
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-top_level = true
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -50.0
-offset_right = 250.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Page1" type="TextureRect" parent="PageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 3
+stretch_mode = 5
+
+[node name="NextButtonContainer" type="BoxContainer" parent="PageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="NextButton" type="Button" parent="PageContainer/NextButtonContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "->"
+
+[node name="AudioControlContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
 size_flags_vertical = 10
-size_flags_stretch_ratio = 10.0
 alignment = 1
 
-[node name="Play" type="Button" parent="HBoxContainer"]
+[node name="Play" type="Button" parent="AudioControlContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="Pause" type="Button" parent="HBoxContainer"]
+[node name="Pause" type="Button" parent="AudioControlContainer"]
 layout_mode = 2
 text = "Pause"
 
-[node name="Restart" type="Button" parent="HBoxContainer"]
+[node name="Restart" type="Button" parent="AudioControlContainer"]
 layout_mode = 2
 text = "Restart"
 
-[node name="Seek" type="HSlider" parent="HBoxContainer"]
+[node name="Seek" type="HSlider" parent="AudioControlContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Prev Page" to="." method="_on_prev_page_pressed"]
-[connection signal="pressed" from="Next Page" to="." method="_on_next_page_pressed"]
+[connection signal="pressed" from="exitContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PageContainer/PrevButtonContainer/PrevButton" to="." method="_on_prev_page_pressed"]
+[connection signal="pressed" from="PageContainer/NextButtonContainer/NextButton" to="." method="_on_next_page_pressed"]

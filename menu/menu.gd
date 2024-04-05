@@ -17,9 +17,6 @@ func _on_server_ip_text_submitted(new_text):
 	$ServerIP.visible = false
 	$"Join".visible = true
 
-func change_level(scene: PackedScene):
-	get_tree().change_scene_to_packed(scene)
-
 
 func _on_ui_test_host_pressed():
 	Globals.host = true

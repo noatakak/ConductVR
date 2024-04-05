@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/player character/player_character.gd" id="1_2pxay"]
 [ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="2_461d4"]
-[ext_resource type="Texture2D" path="res://assets/valve_hand_models/right_hand_file2.png" id="2_vf57u"]
+[ext_resource type="Texture2D" uid="uid://e0ub0vorplvy" path="res://assets/valve_hand_models/right_hand_file2.png" id="2_vf57u"]
 [ext_resource type="PackedScene" uid="uid://dli2pti7dwfxf" path="res://assets/character/character_body.tscn" id="4_v8h8q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hrgu"]
