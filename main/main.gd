@@ -31,25 +31,25 @@ func _hosting():
 	#IPs
 	print("IP addresses in array: " + ips)
 	
-	# Windows IP
-	if OS.has_feature("windows"):
-		if OS.has_environment("COMPUTERNAME"):
-			ip_address = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")), 1)
-	
-	# Linux IP
-	elif OS.has_feature("linux"):
-		if OS.has_environment("HOSTNAME"):
-			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
-	
-	# Mac IP
-	elif OS.has_feature("macos"):
-		if OS.has_environment("HOSTNAME"):
-			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
-	
-	# Android IP
-	elif OS.has_feature("android"):
-		if OS.has_environment("HOSTNAME"):
-			ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
+	## Windows IP
+	#if OS.has_feature("windows"):
+		#if OS.has_environment("COMPUTERNAME"):
+			#ip_address = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")), 1)
+	#
+	## Linux IP
+	#elif OS.has_feature("linux"):
+		#if OS.has_environment("HOSTNAME"):
+			#ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
+	#
+	## Mac IP
+	#elif OS.has_feature("macos"):
+		#if OS.has_environment("HOSTNAME"):
+			#ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
+	#
+	## Android IP
+	#elif OS.has_feature("android"):
+		#if OS.has_environment("HOSTNAME"):
+			#ip_address = IP.resolve_hostname(str(OS.get_environment("HOSTNAME")), 1)
 	
 	ip_address = ip_array[1]
 	Globals.hosting_ip = ip_address

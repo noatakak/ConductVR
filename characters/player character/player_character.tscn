@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/player character/player_character.gd" id="1_2pxay"]
 [ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="2_461d4"]
-[ext_resource type="Texture2D" uid="uid://e0ub0vorplvy" path="res://assets/valve_hand_models/right_hand_file2.png" id="2_vf57u"]
+[ext_resource type="Texture2D" path="res://assets/valve_hand_models/right_hand_file2.png" id="2_vf57u"]
 [ext_resource type="PackedScene" uid="uid://dli2pti7dwfxf" path="res://assets/character/character_body.tscn" id="4_v8h8q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hrgu"]
@@ -113,8 +113,8 @@ bind/25/bone = -1
 bind/25/pose = Transform3D(0.083606, 0.996362, 0.0165156, -0.97618, 0.0785601, 0.20224, 0.200206, -0.0330307, 0.979197, -0.00660726, 0.000335546, 0.0515114)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ex5q5"]
-radius = 0.05
-height = 0.1
+radius = 0.025
+height = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8syl"]
 resource_name = "blinn1"
@@ -504,7 +504,6 @@ bone_idx = 9
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LeftHand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
-visible = false
 mesh = SubResource("SphereMesh_ex5q5")
 
 [node name="RightHand" type="OpenXRHand" parent="."]
@@ -713,7 +712,6 @@ bone_idx = 9
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RightHand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
-visible = false
 mesh = SubResource("SphereMesh_ex5q5")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

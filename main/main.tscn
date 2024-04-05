@@ -54,23 +54,27 @@ mesh = SubResource("BoxMesh_o1yu8")
 environment = SubResource("Environment_6t87e")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.931056, 0.315993, -0.182438, 0, 0.5, 0.866025, 0.364877, -0.806318, 0.465528, -1.8, 8.02995, 3.67364)
-visible = false
-light_energy = 0.0
+transform = Transform3D(0.931056, 0.315993, -0.182438, 0, 0.5, 0.866025, 0.364877, -0.806318, 0.465528, 0, 20, 0)
+light_energy = 0.2
 directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 7, 5)
 light_color = Color(1, 0.996078, 0.909804, 1)
-light_energy = 6.538
-light_indirect_energy = 11.872
-light_size = 0.897
+light_energy = 2.116
 shadow_enabled = true
-spot_range = 40.0
-spot_attenuation = 0.0371628
-spot_angle = 41.77
-spot_angle_attenuation = 0.435275
+spot_range = 30.0
+spot_attenuation = 0.153893
+spot_angle_attenuation = 0.170755
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -0.436802, 0.899558, 0, -0.899558, -0.436802, 0, 7, -5)
+light_color = Color(1, 0.996078, 0.909804, 1)
+light_energy = 2.116
+spot_range = 30.0
+spot_attenuation = 0.153893
+spot_angle_attenuation = 0.170755
 
 [node name="Players" type="Node3D" parent="."]
 
