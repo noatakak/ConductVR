@@ -15,11 +15,11 @@ size = Vector3(2, 2, 0.02)
 script = ExtResource("1_0bn0x")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.881864, 0.471504, 0, -0.471504, 0.881864, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 mesh = SubResource("BoxMesh_ffgam")
 
 [node name="Viewport2Din3D" parent="MeshInstance3D" instance=ExtResource("1_klpak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00985495, 0.0184319)
 screen_size = Vector2(2, 2)
 scene = ExtResource("2_r2tlq")
-viewport_size = Vector2(500, 500)
+viewport_size = Vector2(5000, 5000)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://caabwyk7cgkr6"]
+
+[ext_resource type="Script" path="res://ui/orchestra.gd" id="1_2hu05"]
+[ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_8os6s"]
+[ext_resource type="PackedScene" uid="uid://vaf62dgmvie6" path="res://ui/Podium/View Podium Menu.tscn" id="3_wcbc8"]
+[ext_resource type="PackedScene" uid="uid://dfunwf63xqt8e" path="res://ui/Podium/View Score Menu.tscn" id="4_l5m61"]
+
+[node name="orchestra" type="Node3D"]
+script = ExtResource("1_2hu05")
+
+[node name="MidiPlayer" type="Node" parent="."]
+script = ExtResource("2_8os6s")
+
+[node name="VPodiumMenu" parent="." instance=ExtResource("3_wcbc8")]
+
+[node name="ViewScoreMenu" parent="." instance=ExtResource("4_l5m61")]
+visible = false
+
+[connection signal="transition_to_score" from="VPodiumMenu" to="." method="_on_v_podium_menu_transition_to_score"]
+[connection signal="score_exit" from="ViewScoreMenu" to="." method="_on_view_score_menu_score_exit"]

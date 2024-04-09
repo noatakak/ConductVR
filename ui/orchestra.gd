@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_v_podium_menu_transition_to_score():
+	print("3d signal received, menu switched")
 	$VPodiumMenu.visible = false
 	$ViewScoreMenu.visible = true
 

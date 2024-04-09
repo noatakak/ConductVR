@@ -1,5 +1,7 @@
 extends Node
 
+signal set_score
+
 # Boolean variable to tell if player is hosting
 @export var host = true
 

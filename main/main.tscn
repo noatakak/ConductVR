@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bt8ki3wkarlyd"]
+[gd_scene load_steps=16 format=3 uid="uid://bt8ki3wkarlyd"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_85dna"]
 [ext_resource type="PackedScene" uid="uid://bx0ktjc3qy4tu" path="res://assets/concert_hall/stripped-hall.tscn" id="2_6nunc"]
 [ext_resource type="PackedScene" uid="uid://c2gj2m3bak41h" path="res://characters/placeholder_people/audience_person.tscn" id="4_ir8ws"]
 [ext_resource type="PackedScene" uid="uid://drfgbyj83f5se" path="res://characters/placeholder_people/orchestra_person.tscn" id="4_q3uwv"]
+[ext_resource type="PackedScene" uid="uid://caabwyk7cgkr6" path="res://ui/orchestra.tscn" id="5_3ona0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_namtc"]
 size = Vector3(10, 1, 10)
@@ -35,6 +36,10 @@ albedo_texture = SubResource("ViewportTexture_gn4fk")
 [sub_resource type="PlaneMesh" id="PlaneMesh_ym8la"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_rafl4")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2niw3"]
+flip_faces = true
+size = Vector3(2, 0.2, 2)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_85dna")
@@ -463,3 +468,10 @@ transform = Transform3D(0.545925, 0, 0.24893, 0, 0.6, 0, -0.24893, 0, 0.545925, 
 
 [node name="AudiencePerson75" parent="audience" instance=ExtResource("4_ir8ws")]
 transform = Transform3D(0.545925, 0, 0.24893, 0, 0.6, 0, -0.24893, 0, 0.545925, 16.494, 5.71773, 17.1362)
+
+[node name="orchestra" parent="." instance=ExtResource("5_3ona0")]
+transform = Transform3D(0.4, 0, 0, 0, 0.38637, 0.103528, 0, -0.103528, 0.38637, 0, 1, -0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="orchestra"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_2niw3")

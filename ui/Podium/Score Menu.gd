@@ -10,10 +10,10 @@ signal play
 signal pause
 signal restart
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
+	Globals.connect("set_score", set_score)
 
 func set_score():
 	print(Globals.currentPiece)
@@ -26,13 +26,13 @@ func set_score():
 	$PageContainer/Page2.texture = files[1]
 	index = 1
 	print(files.size())
+	scorePath = ""
 	Globals.currentPiece = ""
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Globals.currentPiece != "":
-		set_score()
+	pass
 
 
 # Function to create array out of images in folders
@@ -43,13 +43,16 @@ func _create_file_dir(path):
 		var file_name = dir.get_next()
 		if file_name == "":
 			break
-		elif !file_name.begins_with(".") and !file_name.ends_with(".import") and !file_name.ends_with(".mid"):
-			files.append(load(path + "/" + file_name))
+		elif file_name.contains(".import"):
+			file_name = file_name.replace(".import", "")
+		#elif !file_name.begins_with(".") and !file_name.ends_with(".import") and !file_name.ends_with(".mid"):
+			files.append(ResourceLoader.load(path + "/" + file_name))
 	dir.list_dir_end()
 
 
 func _on_exit_pressed():
 	Globals.currentPiece = ""
+	emit_signal("exit")
 	#get_tree().change_scene_to_file("res://ui/Podium/Podium Menu.tscn")
 
 
@@ -57,16 +60,16 @@ func _on_prev_page_pressed():
 	if index == 0 || index == 1:
 		pass
 	elif index % 2 == 0:
-		$PageContainer/Page2.texture = files[index - 1]
-		index -= 1
 		$PageContainer/Page1.texture = files[index - 1]
+		index -= 1
+		$PageContainer/Page2.texture = files[index - 1]
 		index -= 1
 		
 		print(index)
 	else:
-		$PageContainer/Page2.texture = files[index - 2]
-		index -= 1
 		$PageContainer/Page1.texture = files[index - 2]
+		index -= 1
+		$PageContainer/Page2.texture = files[index - 2]
 		index -= 1
 		
 		print(index)

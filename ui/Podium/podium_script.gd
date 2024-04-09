@@ -4,6 +4,7 @@ signal transition_to_score()
 
 func on_score_selected():
 	emit_signal("transition_to_score")
+	print("signal received, 3d signal sent to orchestra")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
