@@ -38,6 +38,34 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Restart Server"
 
+[node name="Placeholder" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Mirror Ops" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Mirror Options:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Left" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Left"
+
+[node name="Stage" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Stage"
+
+[node name="Audience" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Audience"
+
+[node name="Right" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Right"
+
 [connection signal="pressed" from="VBoxContainer/Mute" to="." method="_on_mute_pressed"]
 [connection signal="pressed" from="VBoxContainer/Disconnect" to="." method="_on_disconnect_pressed"]
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
