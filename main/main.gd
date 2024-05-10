@@ -19,6 +19,9 @@ func _ready():
 		$Label3D.text = Globals.joining_server_ip
 		_joining()
 
+func _process(delta):
+	pass
+
 
 func _hosting():
 	# Start as a server

@@ -1,20 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://caabwyk7cgkr6"]
+[gd_scene load_steps=7 format=3 uid="uid://caabwyk7cgkr6"]
 
 [ext_resource type="Script" path="res://ui/orchestra.gd" id="1_2hu05"]
 [ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="2_8os6s"]
 [ext_resource type="PackedScene" uid="uid://vaf62dgmvie6" path="res://ui/Podium/View Podium Menu.tscn" id="3_wcbc8"]
 [ext_resource type="PackedScene" uid="uid://dfunwf63xqt8e" path="res://ui/Podium/View Score Menu.tscn" id="4_l5m61"]
+[ext_resource type="PackedScene" uid="uid://dx5xf6dsgurer" path="res://ui/ictuse_manager_right.tscn" id="5_a8ls7"]
+[ext_resource type="PackedScene" uid="uid://6nfeg1kc2bg4" path="res://ui/ictuse_manager_left.tscn" id="6_l32km"]
 
-[node name="orchestra" type="Node3D"]
+[node name="orchestra" type="Node3D" node_paths=PackedStringArray("midiplayer")]
 script = ExtResource("1_2hu05")
+midiplayer = NodePath("MidiPlayer")
 
 [node name="MidiPlayer" type="Node" parent="."]
 script = ExtResource("2_8os6s")
+file = "res://Scores/Grieg_No_4/Grieg_-_Peer_Gynt_Suite_No._1_4._In_the_Hall_of_the_Mountain_King.mid"
+soundfont = "res://assets/sf/GeneralUser GS v1.471.sf2"
 
 [node name="VPodiumMenu" parent="." instance=ExtResource("3_wcbc8")]
 
 [node name="ViewScoreMenu" parent="." instance=ExtResource("4_l5m61")]
 visible = false
 
+[node name="IctuseManager_right" parent="." instance=ExtResource("5_a8ls7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0.4)
+
+[node name="IctuseManager_left" parent="." instance=ExtResource("6_l32km")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.4, 0.4)
+
+[connection signal="changed_time_sig" from="." to="IctuseManager_right" method="_on_orchestra_changed_time_sig"]
+[connection signal="changed_time_sig" from="." to="IctuseManager_left" method="_on_orchestra_changed_time_sig"]
+[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
 [connection signal="transition_to_score" from="VPodiumMenu" to="." method="_on_v_podium_menu_transition_to_score"]
+[connection signal="music_paused" from="ViewScoreMenu" to="." method="_on_music_paused"]
+[connection signal="music_play" from="ViewScoreMenu" to="." method="_on_music_play"]
+[connection signal="music_restart" from="ViewScoreMenu" to="." method="_on_music_restart"]
 [connection signal="score_exit" from="ViewScoreMenu" to="." method="_on_view_score_menu_score_exit"]

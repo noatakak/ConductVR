@@ -247,7 +247,7 @@ var smf_data:SMF.SMFData = null : set = set_smf_data
 ## MIDIトラックデータ smf_dataを再生用に加工したデータが入る
 @onready var track_status:GodotMIDIPlayerTrackStatus = GodotMIDIPlayerTrackStatus.new( )
 ## 現在のテンポ
-var tempo:float = 120.0 : set = set_tempo
+@export var tempo:float = 120.0 : set = set_tempo
 ## 秒 -> タイムベース変換係数
 var seconds_to_timebase:float = 2.3
 ## タイムベース -> 秒変換係数

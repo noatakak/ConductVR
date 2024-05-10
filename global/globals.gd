@@ -1,7 +1,5 @@
 extends Node
 
-signal set_score
-
 # Boolean variable to tell if player is hosting
 @export var host = true
 
@@ -15,3 +13,13 @@ signal set_score
 
 # Variable for current playing piece
 @export var currentPiece = ""
+
+@export var currentMidi = ""
+
+@export var resetScore = false
+
+@export var newScore = false
+
+@export var current_tempo: float = 0.0
+
+@export var beat_pattern: int = 4

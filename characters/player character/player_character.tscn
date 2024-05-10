@@ -8,7 +8,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hrgu"]
 resource_name = "glove"
 cull_mode = 2
-albedo_color = Color(0.603922, 0.603922, 0.603922, 1)
+albedo_color = Color(1, 0, 0.992157, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_d7h6a"]
 resource_name = "left_hand_Mesh_001"
@@ -119,7 +119,7 @@ height = 0.05
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8syl"]
 resource_name = "blinn1"
 cull_mode = 2
-albedo_color = Color(0.603922, 0.603922, 0.603922, 1)
+albedo_color = Color(0, 1, 1, 1)
 normal_texture = ExtResource("2_vf57u")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fqjtl"]

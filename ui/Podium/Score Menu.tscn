@@ -92,3 +92,6 @@ size_flags_vertical = 4
 [connection signal="pressed" from="exitContainer/ExitButton" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="PageContainer/PrevButtonContainer/PrevButton" to="." method="_on_prev_page_pressed"]
 [connection signal="pressed" from="PageContainer/NextButtonContainer/NextButton" to="." method="_on_next_page_pressed"]
+[connection signal="pressed" from="AudioControlContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="AudioControlContainer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="AudioControlContainer/Restart" to="." method="_on_restart_pressed"]
